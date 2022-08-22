@@ -1,0 +1,1 @@
+# terraform-azure-media-services
