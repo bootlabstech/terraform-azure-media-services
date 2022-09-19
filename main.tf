@@ -9,7 +9,7 @@ resource "azurerm_storage_account" "sa" {
 resource "azurerm_media_services_account" "media_services" {
   name                = var.media_services_name
   location            = var.location
-  resource_group_name = var.location
+  resource_group_name = var.resource_group_name
 
   storage_account {
     id         = azurerm_storage_account.sa.id
