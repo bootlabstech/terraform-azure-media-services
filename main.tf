@@ -8,7 +8,7 @@ resource "azurerm_storage_account" "sa" {
 
 resource "azurerm_media_services_account" "media_services" {
   name                = var.name
-  location            = var.location
+  location            = var.resource_group_location
   resource_group_name = var.resource_group_name
 
   storage_account {
@@ -18,7 +18,7 @@ resource "azurerm_media_services_account" "media_services" {
   depends_on = [ azurerm_user_assigned_identity.example ]
 }
 resource "azurerm_user_assigned_identity" "user_assigned_identity" {
-  location            = var.location
+  location            = var.resource_group_location
   name                =  "${var.name}-identity"
   resource_group_name = var.resource_group_name
 }
