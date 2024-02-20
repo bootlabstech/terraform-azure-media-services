@@ -8,10 +8,6 @@ variable "location" {
   description = "location of the resource group"
 }
 
-variable "sa_name" {
-  type        = string
-  description = "name of the azurerm_storage_account"
-}
 
 variable "name" {
   type        = string
