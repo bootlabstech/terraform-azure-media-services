@@ -2,12 +2,12 @@ resource "azurerm_storage_account" "sa" {
   name                     = var.sa_name
   resource_group_name      = var.resource_group_name
   location                 = var.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
+  account_tier             = var.account_tier
+  account_replication_type = var.account_replication_type
 }
 
 resource "azurerm_media_services_account" "media_services" {
-  name                = var.media_services_name
+  name                = var.name
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -15,4 +15,10 @@ resource "azurerm_media_services_account" "media_services" {
     id         = azurerm_storage_account.sa.id
     is_primary = true
   }
+  depends_on = [ azurerm_user_assigned_identity.example ]
+}
+resource "azurerm_user_assigned_identity" "user_assigned_identity" {
+  location            = var.location
+  name                =  "${var.name}-identity"
+  resource_group_name = var.resource_group_name
 }

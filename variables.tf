@@ -13,7 +13,18 @@ variable "sa_name" {
   description = "name of the azurerm_storage_account"
 }
 
-variable "media_services_name" {
+variable "name" {
   type        = string
   description = "name of the azurerm_media_services_account"
+}
+variable "account_tier" {
+  type        = string
+  description = "name of the azurerm_media_services_account"
+  default = "Standard"
+}
+variable "account_replication_type" {
+  type        = string
+  description = "name of the azurerm_media_services_account"
+  default = "LRS"
+  
 }
